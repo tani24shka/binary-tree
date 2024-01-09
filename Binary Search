@@ -1,0 +1,17 @@
+int search(vector<int> &a, int target) {
+    // Write your code here.
+    int n=a.size();
+    int i=0;
+    int j=n-1;
+    while(i<=j)
+    {
+        int mid=(i+j)/2;
+        if(target==a[mid])
+        return mid;
+        else if(a[mid]>target)
+        j=mid-1;
+        else
+        i=mid+1;
+    }
+    return -1;
+}
