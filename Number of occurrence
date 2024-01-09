@@ -1,0 +1,47 @@
+int count(vector<int>& nums, int n, int target) {
+	 //int n=nums.size();
+        int start=0;
+        int end=n-1;
+        int low=0;
+        int high=0;
+        while(start<=end)
+        {
+            int mid=(start+end)/2;
+            if(nums[mid]==target)
+            {
+                low=mid;
+                end=mid-1;
+            }
+            if(nums[mid]>target)
+            {
+                end=mid-1;
+            }
+            if(nums[mid]<target)
+            {
+                start=mid+1;
+            }
+        }
+         start=0;
+        end=n-1;
+         while(start<=end)
+        {
+            int mid=(start+end)/2;
+            if(nums[mid]==target)
+            {
+                high=mid;
+                start=mid+1;
+            }
+            if(nums[mid]>target)
+            {
+                end=mid-1;
+            }
+            if(nums[mid]<target)
+            {
+                start=mid+1;
+            }
+        }
+		if(nums[n-1]<target){
+		return 0;
+	}
+        return high-low+1;
+}
