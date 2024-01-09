@@ -1,0 +1,28 @@
+int floorSqrt(int n)
+{
+      if(n == 0 || n == 1)
+    {
+        return n;
+    }
+    // Write your code here.
+    int start=2;
+    int end=n;
+    int u=0;
+    while(start<end)
+    {
+        int mid=(start+end)/2;
+        long int sq=mid*mid;
+        if(n==sq)
+        return mid;
+        if(n<sq)
+        {
+            end=mid-1;
+        }
+        if(n>sq)
+        {
+            u=mid;
+            start=mid+1;
+        }
+    }
+    return u;
+}
