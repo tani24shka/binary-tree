@@ -1,0 +1,20 @@
+int lowerBound(vector<int> arr, int n, int x) {
+	// Write your code here
+	int start=0;
+	int end=n-1;
+	int lo=x; // to handle if x>a[n-1]
+	while(start<=end)
+	{
+		int mid=(start+end)/2;
+		if(arr[mid]>=x)
+		{
+			lo=mid;//for lower bound
+			end=mid-1;
+		}
+		else if(arr[mid]<x)
+		{
+			start=mid+1;//divide the array
+		}
+	} 
+	return lo;
+}
