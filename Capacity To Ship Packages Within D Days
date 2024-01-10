@@ -1,0 +1,52 @@
+class Solution {
+public:
+    int maxt(vector<int>& weights)
+    {
+        int mac=INT_MIN;
+        for(int i=0;i<weights.size();i++)
+        {
+            if(weights[i]>mac)
+            mac=weights[i];
+        }
+        return mac;
+    }
+    int shipping(vector<int>& weights, int mid)
+    {
+        int days=1,load=0;
+        int sum=0;
+        for(int i=0;i<weights.size();i++)
+        {
+            if(load+weights[i]>mid){
+                days++;
+                load=weights[i];
+            }
+            else{
+                load+=weights[i];
+            }
+        }
+        return days;
+    }
+    int shipWithinDays(vector<int>& weights, int days) {
+        int start=maxt(weights);
+        int end;
+        int sum=0;
+        for(int i=0;i<weights.size();i++)
+        {
+            sum+=weights[i];
+        }
+        end=sum;
+        int mid;
+        while(start<=end)
+        {
+            mid=(start+end)/2;
+         //   int u=shipping(weights,mid);
+              if(shipping(weights,mid)<=days){
+                end=mid-1;
+            }
+            else{
+                start=mid+1;
+            }
+        }
+        return start;
+    }
+};
